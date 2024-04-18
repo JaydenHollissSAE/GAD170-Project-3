@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
  
 [RequireComponent(typeof(CharacterController))]
-public class PlayerMovement : MonoBehaviour
+public class CameraMovement : MonoBehaviour
 {
     // INSTRUCTIONS
     // This script must be on an object that has a Character Controller component.
@@ -35,9 +35,6 @@ public class PlayerMovement : MonoBehaviour
     // How high the player can jump
     public float jumpHeight = 2f;
 
-    public GameObject playerCamera;
-    private float xRotate = 0f;
-
     private void Start()
     {
         // If the variable "controller" is empty...
@@ -50,33 +47,9 @@ public class PlayerMovement : MonoBehaviour
  
     private void Update()
     {
-        //// These lines let the script rotate the player based on the mouse moving
-        //yaw += speedH * Input.GetAxis("Mouse X");
-        //pitch -= speedV * Input.GetAxis("Mouse Y");
-        yaw = playerCamera.transform.eulerAngles.y - transform.eulerAngles.y;
-        //Debug.Log(yaw);
-        //Debug.Log(transform.eulerAngles.x);
-
-        if (Input.GetKeyDown(KeyCode.S)) 
-        {
-            yaw += 180f;
-            xRotate = yaw;
-            characterRotate();
-        }
-
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            yaw -= 90f;
-            xRotate = yaw;
-            characterRotate();
-        }
-
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            yaw += 90f;
-            xRotate = yaw;
-            characterRotate();
-        }
+        // These lines let the script rotate the player based on the mouse moving
+        yaw += speedH * Input.GetAxis("Mouse X");
+        pitch -= speedV * Input.GetAxis("Mouse Y");
 
         // Get the Left/Right and Forward/Back values of the input being used (WASD, Joystick etc.)
         float x = Input.GetAxis("Horizontal");
@@ -88,8 +61,8 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
         }
 
-        //// Rotate the player based off those mouse values we collected earlier
-        //transform.eulerAngles = new Vector3(0.0f, yaw, 0.0f);
+        // Rotate the player based off those mouse values we collected earlier
+        transform.eulerAngles = new Vector3(0.0f, yaw, 0.0f);
  
         // This is stealing the data about the player being on the ground from the character controller
         isGrounded = controller.isGrounded;
@@ -107,13 +80,5 @@ public class PlayerMovement : MonoBehaviour
  
         // Finally, it applies that vector it just made to the character
         controller.Move(move * speed * Time.deltaTime + velocity * Time.deltaTime);
-
-        yaw = 0f;
-    }
-
-    private void characterRotate()
-    {
-        Vector3 characterRotater = new Vector3(0f, xRotate, 0f); // Creating our initial Vector with rotation values.
-        transform.Rotate(characterRotater * Time.deltaTime * 0.2f); // The main part of the rotation script.
     }
 }

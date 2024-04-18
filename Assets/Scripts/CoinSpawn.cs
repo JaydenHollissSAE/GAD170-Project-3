@@ -14,7 +14,7 @@ public class CoinSpawn : MonoBehaviour
             for (int i = 0; i < 30; i++)
             {
                 spawnTime += Random.Range(0.2f, 3f);
-                Debug.Log(spawnTime);
+                //Debug.Log(spawnTime);
 
 
 
@@ -36,8 +36,8 @@ public class CoinSpawn : MonoBehaviour
     IEnumerator SpawnWait()
     {
         yield return new WaitForSeconds(spawnTime);
-        Debug.Log("Run");
-        randomPosition = new Vector3(Random.Range(-15, 15), 30, Random.Range(-15, 15));
+        Debug.Log("Spawning New Coin");
+        randomPosition = new Vector3(Random.Range(-15, 15), Random.Range(20, 35), Random.Range(-15, 15));
 
         Instantiate(CoinPrefab, randomPosition, Quaternion.identity);
     }
