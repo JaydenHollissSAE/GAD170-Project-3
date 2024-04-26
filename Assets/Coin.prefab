@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2487560423180157631
+--- !u!1 &646700088225290073
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,12 +8,12 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8976877065280376471}
-  - component: {fileID: 1355820682449163237}
-  - component: {fileID: 8284790544256238116}
-  - component: {fileID: 6958613399940123720}
-  - component: {fileID: 7033756105378737244}
-  - component: {fileID: -8077343429325251524}
+  - component: {fileID: 6517635477414742214}
+  - component: {fileID: 731070438737317298}
+  - component: {fileID: 1035267953920882573}
+  - component: {fileID: 3498203910785814994}
+  - component: {fileID: 5832404924615714860}
+  - component: {fileID: 8486578316894631592}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Untagged
@@ -21,13 +21,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8976877065280376471
+--- !u!4 &6517635477414742214
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2487560423180157631}
+  m_GameObject: {fileID: 646700088225290073}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 14.389756, y: 7.065971, z: -1.7641181}
@@ -36,21 +36,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1355820682449163237
+--- !u!33 &731070438737317298
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2487560423180157631}
+  m_GameObject: {fileID: 646700088225290073}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &8284790544256238116
+--- !u!23 &1035267953920882573
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2487560423180157631}
+  m_GameObject: {fileID: 646700088225290073}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -86,13 +86,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &6958613399940123720
+--- !u!135 &3498203910785814994
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2487560423180157631}
+  m_GameObject: {fileID: 646700088225290073}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -107,13 +107,13 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &7033756105378737244
+--- !u!54 &5832404924615714860
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2487560423180157631}
+  m_GameObject: {fileID: 646700088225290073}
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
@@ -134,13 +134,13 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &-8077343429325251524
+--- !u!114 &8486578316894631592
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2487560423180157631}
+  m_GameObject: {fileID: 646700088225290073}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f83ae420ac0c9094688b6ea54671c103, type: 3}
@@ -148,3 +148,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popPrefab: {fileID: 304560786347983084, guid: 89f926463bec0c048be8b2c1385cde92, type: 3}
   collectedMaterial: {fileID: 2100000, guid: fe033dd753581ea4996366caecbdd220, type: 2}
+  coinsCollectedUI: {fileID: 0}
+  uiManager: {fileID: 0}
+  coinsCollected: 0

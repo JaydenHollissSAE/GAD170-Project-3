@@ -37,7 +37,7 @@ public class CoinSpawn : MonoBehaviour
     {
         yield return new WaitForSeconds(spawnTime);
         Debug.Log("Spawning New Coin");
-        randomPosition = new Vector3(Random.Range(-15, 15), Random.Range(20, 35), Random.Range(-15, 15));
+        randomPosition = new Vector3(Random.Range(-30, 30), Random.Range(20, 35), Random.Range(-30, 30));
 
         Instantiate(CoinPrefab, randomPosition, Quaternion.identity);
     }

@@ -31,6 +31,7 @@ public class CameraMovement : MonoBehaviour
 
     // So the script knows if you can jump!
     private bool isGrounded;
+    private bool doubleJump;
 
     // How high the player can jump
     public float jumpHeight = 2f;
@@ -56,8 +57,12 @@ public class CameraMovement : MonoBehaviour
         float z = Input.GetAxis("Vertical");
  
         // Let the player jump if they are on the ground and they press the jump button
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetButtonDown("Jump") && isGrounded || Input.GetButtonDown("Jump") && doubleJump)
         {
+            if (doubleJump)
+            {
+                doubleJump = false;
+            }
             velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
         }
 
@@ -66,6 +71,10 @@ public class CameraMovement : MonoBehaviour
  
         // This is stealing the data about the player being on the ground from the character controller
         isGrounded = controller.isGrounded;
+        if (isGrounded )
+        {
+            doubleJump = true;
+        }
  
         if (isGrounded && velocity.y < 0)
         {
