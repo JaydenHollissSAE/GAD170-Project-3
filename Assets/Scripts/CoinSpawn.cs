@@ -11,18 +11,11 @@ public class CoinSpawn : MonoBehaviour
     void Start()
     {
         {
-            for (int i = 0; i < 30; i++)
+            for (int i = 0; i < 30; i++) //Performs a loop of code 30 times.
             {
-                spawnTime += Random.Range(0.2f, 3f);
+                spawnTime += Random.Range(0.2f, 3f); //Gives a random spawn time from 0.2 to 3 for every coin, accounting for each other's time.
                 //Debug.Log(spawnTime);
-
-
-
-                //Create random transform position
-
-                StartCoroutine(SpawnWait());
-
-
+                StartCoroutine(SpawnWait()); //Starts the SpawnWait function.
             }
         }
     }
@@ -35,11 +28,10 @@ public class CoinSpawn : MonoBehaviour
 
     IEnumerator SpawnWait()
     {
-        yield return new WaitForSeconds(spawnTime);
-        Debug.Log("Spawning New Coin");
-        randomPosition = new Vector3(Random.Range(-30, 30), Random.Range(20, 35), Random.Range(-30, 30));
-
-        Instantiate(CoinPrefab, randomPosition, Quaternion.identity);
+        yield return new WaitForSeconds(spawnTime); //Waits for the time decided by spawnTime.
+        //Debug.Log("Spawning New Coin"); 
+        randomPosition = new Vector3(Random.Range(-30, 30), Random.Range(20, 35), Random.Range(-30, 30)); //Gets a bew random position for the coin to spawn on the map.
+        Instantiate(CoinPrefab, randomPosition, Quaternion.identity); //Spawns a new coin based on randomPosition's location.
     }
 
 }

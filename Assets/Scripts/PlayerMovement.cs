@@ -36,15 +36,16 @@ public class PlayerMovement : MonoBehaviour
     public float jumpHeight = 2f;
 
     public GameObject playerCamera;
+    
     private float xRotate = 0f;
 
     private void Start()
     {
         // If the variable "controller" is empty...
-        if(controller == null)
+        if(controller == null) //Checks if the game's controller is attached.
         {
             // ...then this searches the components on the gameobject and gets a reference to the CharacterController class
-            controller = GetComponent<CharacterController>();
+            controller = GetComponent<CharacterController>(); //Sets the game's controller.
         }
     }
  
@@ -53,67 +54,67 @@ public class PlayerMovement : MonoBehaviour
         //// These lines let the script rotate the player based on the mouse moving
         //yaw += speedH * Input.GetAxis("Mouse X");
         //pitch -= speedV * Input.GetAxis("Mouse Y");
-        yaw = playerCamera.transform.eulerAngles.y - transform.eulerAngles.y;
+        yaw = playerCamera.transform.eulerAngles.y - transform.eulerAngles.y; //Gets the Camera's postion and the player's position, setting yaw based on them.
         //Debug.Log(yaw);
         //Debug.Log(transform.eulerAngles.x);
 
-        if (Input.GetKeyDown(KeyCode.S)) 
+        if (Input.GetKeyDown(KeyCode.S)) //Checks if the S key is pressed.
         {
-            yaw += 180f;
-            xRotate = yaw;
-            characterRotate();
+            yaw += 180f; //Increases yaw by 180.
+            xRotate = yaw; //Sets xRotate to yaw.
+            characterRotate(); //Runs the characterRotate function.
         }
 
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.D)) //Checks if the D key is pressed.
         {
-            yaw -= 90f;
-            xRotate = yaw;
-            characterRotate();
+            yaw -= 90f; //Decreases yaw by 90.
+            xRotate = yaw; //Sets xRotate to yaw.
+            characterRotate(); //Runs the characterRotate function.
         }
 
         if (Input.GetKeyDown(KeyCode.A))
         {
-            yaw += 90f;
-            xRotate = yaw;
-            characterRotate();
+            yaw += 90f; //Increases yaw by 90.
+            xRotate = yaw; //Sets xRotate to yaw.
+            characterRotate(); //Runs the characterRotate function.
         }
 
         // Get the Left/Right and Forward/Back values of the input being used (WASD, Joystick etc.)
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        float x = Input.GetAxis("Horizontal"); //Gets the current horizontal postion.
+        float z = Input.GetAxis("Vertical"); //Gets the current vertical postion.
  
         // Let the player jump if they are on the ground and they press the jump button
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetButtonDown("Jump") && isGrounded) //Checks if the player is grounded and has pressed jump.
         {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
+            velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity); //Moves the player up to jump.
         }
 
         //// Rotate the player based off those mouse values we collected earlier
         //transform.eulerAngles = new Vector3(0.0f, yaw, 0.0f);
  
         // This is stealing the data about the player being on the ground from the character controller
-        isGrounded = controller.isGrounded;
+        isGrounded = controller.isGrounded; //Sets isGrounded based on the player's postion.
  
-        if (isGrounded && velocity.y < 0)
+        if (isGrounded && velocity.y < 0) //Checks if the player is grounded and not moving up.
         {
-            velocity.y = -2f;
+            velocity.y = -2f; //Removes all up momentum from the player.
         }
  
         // This fakes gravity!
-        velocity.y += gravity * Time.deltaTime;
+        velocity.y += gravity * Time.deltaTime; //Fakes gravity based on time and gravity values acting on player momentum.
 
         // This takes the Left/Right and Forward/Back values to build a vector
-        Vector3 move = transform.right * x + transform.forward * z;
+        Vector3 move = transform.right * x + transform.forward * z; //Uses the player's Left/Right and Forward/Back positions to give a movement vector.
  
         // Finally, it applies that vector it just made to the character
-        controller.Move(move * speed * Time.deltaTime + velocity * Time.deltaTime);
+        controller.Move(move * speed * Time.deltaTime + velocity * Time.deltaTime); //Moves the player based on its current position, movement and speed.
 
-        yaw = 0f;
+        yaw = 0f; //Sets yaw to 0.
     }
 
     private void characterRotate()
     {
-        Vector3 characterRotater = new Vector3(0f, xRotate, 0f); // Creating our initial Vector with rotation values.
-        transform.Rotate(characterRotater * Time.deltaTime * 0.2f); // The main part of the rotation script.
+        Vector3 characterRotater = new Vector3(0f, xRotate, 0f); //Creating our initial Vector with rotation values.
+        transform.Rotate(characterRotater * Time.deltaTime * 0.2f); //The main part of the rotation script.
     }
 }

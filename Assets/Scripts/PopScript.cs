@@ -9,9 +9,9 @@ public class PopScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (DelayDeleteCorutine == null)
+        if (DelayDeleteCorutine == null) //Checks if DelayDeleteCoroutine exists.
         {
-            DelayDeleteCorutine = StartCoroutine(DelayDelete());
+            DelayDeleteCorutine = StartCoroutine(DelayDelete()); //Runs the DelayDelete function.
         }
     }
 
@@ -23,7 +23,7 @@ public class PopScript : MonoBehaviour
 
     IEnumerator DelayDelete()
     {
-        yield return new WaitForSeconds(1.5f);
-        Destroy(this.gameObject);
+        yield return new WaitForSeconds(1.5f); //Waits 1 and a half seconds.
+        Destroy(this.gameObject); //Removes the pop effect from the scene.
     }
 }

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Unused script, originally intended as a timer for the game. Functionality achieved elsewhere instead.
+
 public class Timer : MonoBehaviour
 {
     public int timeLeft = 60;

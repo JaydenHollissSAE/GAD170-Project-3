@@ -39,55 +39,55 @@ public class CameraMovement : MonoBehaviour
     private void Start()
     {
         // If the variable "controller" is empty...
-        if(controller == null)
+        if(controller == null) //Checks if the game's controller is attached.
         {
             // ...then this searches the components on the gameobject and gets a reference to the CharacterController class
-            controller = GetComponent<CharacterController>();
+            controller = GetComponent<CharacterController>(); //Sets the game's controller.
         }
     }
  
     private void Update()
     {
         // These lines let the script rotate the player based on the mouse moving
-        yaw += speedH * Input.GetAxis("Mouse X");
-        pitch -= speedV * Input.GetAxis("Mouse Y");
+        yaw += speedH * Input.GetAxis("Mouse X"); //Sets yaw based on the player's mouse left and right movement.
+        pitch -= speedV * Input.GetAxis("Mouse Y"); //Sets pitch based on the player's mouse up and down movement.
 
         // Get the Left/Right and Forward/Back values of the input being used (WASD, Joystick etc.)
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
- 
+        float x = Input.GetAxis("Horizontal"); //Gets the current horizontal postion.
+        float z = Input.GetAxis("Vertical"); //Gets the current vertical postion.
+
         // Let the player jump if they are on the ground and they press the jump button
-        if (Input.GetButtonDown("Jump") && isGrounded || Input.GetButtonDown("Jump") && doubleJump)
+        if (Input.GetButtonDown("Jump") && isGrounded || Input.GetButtonDown("Jump") && doubleJump) //Checks if the player is grounded and has pressed jump or if it has a double jump and pressed jump.
         {
-            if (doubleJump)
+            if (doubleJump) //Checks if a doubleJump is met.
             {
-                doubleJump = false;
+                doubleJump = false; //Sets doubleJump to false.
             }
-            velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
+            velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity); //Moves the player up to jump.
         }
 
         // Rotate the player based off those mouse values we collected earlier
-        transform.eulerAngles = new Vector3(0.0f, yaw, 0.0f);
+        transform.eulerAngles = new Vector3(0.0f, yaw, 0.0f); //Rotates the player based on their mouse position.
  
         // This is stealing the data about the player being on the ground from the character controller
-        isGrounded = controller.isGrounded;
-        if (isGrounded )
+        isGrounded = controller.isGrounded; //Sets isGrounded based on the player's postion.
+        if (isGrounded ) //Checks if isGrounded is met.
         {
-            doubleJump = true;
+            doubleJump = true; //Sets doubleJump to true.
         }
  
-        if (isGrounded && velocity.y < 0)
+        if (isGrounded && velocity.y < 0) //Checks if the player is grounded and not moving up.
         {
-            velocity.y = -2f;
+            velocity.y = -2f; //Removes all up momentum from the player.
         }
  
         // This fakes gravity!
-        velocity.y += gravity * Time.deltaTime;
+        velocity.y += gravity * Time.deltaTime; //Fakes gravity based on time and gravity values acting on player momentum.
 
         // This takes the Left/Right and Forward/Back values to build a vector
-        Vector3 move = transform.right * x + transform.forward * z;
- 
+        Vector3 move = transform.right * x + transform.forward * z; //Uses the player's Left/Right and Forward/Back positions to give a movement vector.
+
         // Finally, it applies that vector it just made to the character
-        controller.Move(move * speed * Time.deltaTime + velocity * Time.deltaTime);
+        controller.Move(move * speed * Time.deltaTime + velocity * Time.deltaTime); //Moves the player based on its current position, movement and speed.
     }
 }
