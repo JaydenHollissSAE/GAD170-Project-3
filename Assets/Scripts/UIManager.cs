@@ -56,7 +56,7 @@ public class UIManager : MonoBehaviour
         {
             if (highScoreBuffer < scoreList[i]) //Checks if highScoreBuffer is smaller than the selected item in scoreList.
             {
-                highScoreBuffer = scoreList[i]; //Sets highScoreBuffer to the scelected item in scoreList.
+                highScoreBuffer = scoreList[i]; //Sets highScoreBuffer to the selected item in scoreList.
             }
         }
 
@@ -75,7 +75,7 @@ public class UIManager : MonoBehaviour
 
         timeRemaining -= 1; //Removes 1 from timeRemaining.
         //Debug.Log(timeRemaining);
-        if (timeRemaining < 6) //Checks if timeRemaining is below 6
+        if (timeRemaining < 6) //Checks if timeRemaining is below 6.
         {
             gameTimer.text = "<color=#FF2D00>" + timeRemaining.ToString() + "s</color>"; //Sets time remaining on Ui with red colour.
 

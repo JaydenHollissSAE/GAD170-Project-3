@@ -54,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
         //// These lines let the script rotate the player based on the mouse moving
         //yaw += speedH * Input.GetAxis("Mouse X");
         //pitch -= speedV * Input.GetAxis("Mouse Y");
-        yaw = playerCamera.transform.eulerAngles.y - transform.eulerAngles.y; //Gets the Camera's postion and the player's position, setting yaw based on them.
+        yaw = playerCamera.transform.eulerAngles.y - transform.eulerAngles.y; //Gets the Camera's position and the player's position, setting yaw based on them.
         //Debug.Log(yaw);
         //Debug.Log(transform.eulerAngles.x);
 
@@ -80,8 +80,8 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Get the Left/Right and Forward/Back values of the input being used (WASD, Joystick etc.)
-        float x = Input.GetAxis("Horizontal"); //Gets the current horizontal postion.
-        float z = Input.GetAxis("Vertical"); //Gets the current vertical postion.
+        float x = Input.GetAxis("Horizontal"); //Gets the current horizontal position.
+        float z = Input.GetAxis("Vertical"); //Gets the current vertical position.
  
         // Let the player jump if they are on the ground and they press the jump button
         if (Input.GetButtonDown("Jump") && isGrounded) //Checks if the player is grounded and has pressed jump.
@@ -93,7 +93,7 @@ public class PlayerMovement : MonoBehaviour
         //transform.eulerAngles = new Vector3(0.0f, yaw, 0.0f);
  
         // This is stealing the data about the player being on the ground from the character controller
-        isGrounded = controller.isGrounded; //Sets isGrounded based on the player's postion.
+        isGrounded = controller.isGrounded; //Sets isGrounded based on the player's position.
  
         if (isGrounded && velocity.y < 0) //Checks if the player is grounded and not moving up.
         {

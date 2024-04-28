@@ -53,8 +53,8 @@ public class CameraMovement : MonoBehaviour
         pitch -= speedV * Input.GetAxis("Mouse Y"); //Sets pitch based on the player's mouse up and down movement.
 
         // Get the Left/Right and Forward/Back values of the input being used (WASD, Joystick etc.)
-        float x = Input.GetAxis("Horizontal"); //Gets the current horizontal postion.
-        float z = Input.GetAxis("Vertical"); //Gets the current vertical postion.
+        float x = Input.GetAxis("Horizontal"); //Gets the current horizontal position.
+        float z = Input.GetAxis("Vertical"); //Gets the current vertical position.
 
         // Let the player jump if they are on the ground and they press the jump button
         if (Input.GetButtonDown("Jump") && isGrounded || Input.GetButtonDown("Jump") && doubleJump) //Checks if the player is grounded and has pressed jump or if it has a double jump and pressed jump.
@@ -70,7 +70,7 @@ public class CameraMovement : MonoBehaviour
         transform.eulerAngles = new Vector3(0.0f, yaw, 0.0f); //Rotates the player based on their mouse position.
  
         // This is stealing the data about the player being on the ground from the character controller
-        isGrounded = controller.isGrounded; //Sets isGrounded based on the player's postion.
+        isGrounded = controller.isGrounded; //Sets isGrounded based on the player's position.
         if (isGrounded ) //Checks if isGrounded is met.
         {
             doubleJump = true; //Sets doubleJump to true.

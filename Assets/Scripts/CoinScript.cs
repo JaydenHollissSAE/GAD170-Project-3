@@ -33,7 +33,6 @@ public class CoinScript : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        //If we collide with the ground
         if (collision.gameObject.CompareTag("Player")) //Checks if the player is colliding with the object.
         {
             //Change to pop particle prefab
